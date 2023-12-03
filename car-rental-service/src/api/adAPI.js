@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: `https://656bb3fddac3630cf72854f1.mockapi.io/api`,
+  baseURL: `https://656bb3fddac3630cf72854f1.mockapi.io`,
 });
 
 export const getAllAds = async (page) => {
@@ -12,18 +12,15 @@ export const getAllAds = async (page) => {
   return data;
 };
 
-export const getOneAd = async (id) => {
-  const { data } = await instance.get(`advert/${id}`);
+export const getOneAd = async (_id) => {
+  const { data } = await instance.get(`advert/${_id}`);
 
   return data;
 };
 
-const addToFav = async (id) => {};
-
-const AdApi = {
+const adAPI = {
   getAllAds,
   getOneAd,
-  addToFav,
 };
 
-export default AdApi;
+export default adAPI;

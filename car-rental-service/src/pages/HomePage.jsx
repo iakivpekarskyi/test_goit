@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import Header from './Header';
+import Header from '../components/Header';
 
 const HomePage = () => {
   return (
-    <div>
+    <section>
       <Header />
       <div className='bg-neutral-50 px-6 py-20 text-center '>
         <h1 className='mb-6 text-5xl font-bold'>
@@ -20,7 +20,7 @@ const HomePage = () => {
           Learn More
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

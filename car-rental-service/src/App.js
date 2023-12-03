@@ -1,27 +1,36 @@
-import HomePage from './components/HomePage';
-import CatalogPage from './components/CatalogPage';
-import FavoritesPage from './components/FavoritesPage';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from 'react-router-dom';
 import Layout from './components/Layout';
+import { lazy } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path='/catalog' element={<CatalogPage />} />
-          <Route path='/favorites' element={<FavoritesPage />} />
-          <Route path='*' element={<Navigate to='/' />} />
-        </Route>
-      </Routes>
-    </Router>
+const HomePage = lazy(() => import('./pages/HomePage'));
+const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
+const CatalogPage = lazy(() => import('./pages/CatalogPage'));
+
+export const App = () => {
+  const router = createBrowserRouter(
+    [
+      {
+        element: <Layout />,
+        children: [
+          {
+            path: '/',
+            element: <HomePage />,
+          },
+          {
+            path: '/catalog',
+            element: <CatalogPage />,
+          },
+          {
+            path: '/favorites',
+            element: <FavoritesPage />,
+          },
+        ],
+      },
+    ],
+    {
+      basename: '/car-rent',
+    }
   );
-}
 
-export default App;
+  return <RouterProvider router={router} />;
+};
