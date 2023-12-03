@@ -1,11 +1,8 @@
-import React from 'react';
 import Card from './Card';
 
-const Hero = () => {
-  // Number of cards
+const CatalogPage = () => {
   const numCards = 12;
 
-  // Generate an array with indices from 0 to numCards - 1
   const cardIndices = Array.from({ length: numCards }, (_, index) => index);
 
   return (
@@ -17,4 +14,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default CatalogPage;
